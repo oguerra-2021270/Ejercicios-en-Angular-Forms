@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { User } from './user';
+import { EnrollmentService } from './enrollment.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,9 @@ import { User } from './user';
   topics = ['Angular', 'React', 'Vue'];
   topicHasError= true;
 
-  userModel = new User('', 'rob@test.com', 55556464, 'default', 'morning', true);
+  userModel = new User('Rob', 'rob@test.com', 55556464, 'default', 'morning', true);
+ 
+  constructor(private _enrollmentService: EnrollmentService){}
 
   validateTopic(value) {
     if (value === 'default') {
@@ -18,5 +21,13 @@ import { User } from './user';
     } else {
       this.topicHasError = false;
     }
+  }
+
+  onSubmit() {
+    this._enrollmentService.enroll(this.userModel)
+    .subscribe(
+      data => console.log('Succes', data),
+      error => console.log('Error!', error)
+    )
   }
 }
