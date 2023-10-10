@@ -2,10 +2,8 @@
   <h1>Bootcamp Enrollment Form</h1>
   <form #userForm="ngForm">
 
-    <!-- {{ userForm.value | json}}
-    <hr />
-    {{userModel | json}} -->
 
+    {{ userForm.form.valid }}
     <div class="form-group">
       <label>Name</label>
       <input type="text" required #name="ngModel" 
@@ -61,7 +59,7 @@
       </label>
     </div>
 
-    <button class="btn btn-primary" type="submit">Sumbit form</button>
+    <button [disabled]="userForm.form.invalid || topicHasError" class="btn btn-primary" type="submit">Sumbit form</button>
 
   </form>
 </div>
