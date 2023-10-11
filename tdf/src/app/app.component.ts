@@ -11,6 +11,7 @@ import { EnrollmentService } from './enrollment.service';
   topics = ['Angular', 'React', 'Vue'];
   topicHasError= true;
   submitted = false;
+  errorMsg = '';
 
   userModel = new User('Rob', 'rob@test.com', 55556464, 'default', 'morning', true);
  
@@ -29,7 +30,7 @@ import { EnrollmentService } from './enrollment.service';
     this._enrollmentService.enroll(this.userModel)
     .subscribe(
       data => console.log('Succes', data),
-      error => console.log('Error!', error)
+      error => this.errorMsg = error.statusText
     )
   }
 }
