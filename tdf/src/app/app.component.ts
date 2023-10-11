@@ -25,12 +25,13 @@ import { EnrollmentService } from './enrollment.service';
     }
   }
 
-  onSubmit() {
-    this.submitted = true;
-    this._enrollmentService.enroll(this.userModel)
-    .subscribe(
-      data => console.log('Succes', data),
-      error => this.errorMsg = error.statusText
-    )
+  onSubmit(userForm) {
+    console.log(userForm)
+    // this.submitted = true;
+    // this._enrollmentService.enroll(this.userModel)
+    // .subscribe(
+    //   data => console.log('Succes', data),
+    //   error => this.errorMsg = error.statusText
+    // )
   }
 }
