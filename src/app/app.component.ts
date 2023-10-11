@@ -17,4 +17,12 @@ export class AppComponent {
       postalCode: new FormControl('')
     })
   });
+
+  loadApiData() {
+    this.registrationForm.patchValue({
+      userName: 'Bruce',
+      password: 'test',
+      confirmPassword: 'test'
+    });
+  }
 }
