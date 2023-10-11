@@ -1,23 +1,55 @@
 <div class="container-fluid">
   <h2>Registration form</h2>
   <form [formGroup]="registrationForm">
+    {{registrationForm.value | json}}
+
     <div class="form-group">
       <label>Username</label>
       <input formControlName="userName" type="text" class="form-control">
     </div>
+
+    <br>
 
     <div class="form-group">
       <label>Password</label>
       <input formControlName="password" type="password" class="form-control">
     </div>
 
+    <br>
+
     <div class="form-group">
       <label>Confirm password</label>
       <input formControlName="confirmPassword" type="password" class="form-control">
     </div>
 
+    <br>
+
+    <div formGroupName="address">
+
+      <div class="form-group">
+        <label>City</label>
+        <input  formControlName="city" type="text" class="form-control">
+      </div>
+
+      <br>
+
+      <div class="form-group">
+        <label>State</label>
+        <input formControlName="state" type="text" class="form-control">
+      </div>
+
+      <br>
+
+      <div class="form-group">
+        <label>Postal Code</label>
+        <input formControlName="postalCode" type="text" class="form-control">
+      </div>
+
+      <br>
+
+    </div>
+
     <button class="btn btn-primary" type="submit">Register</button>
 
   </form>
-  {{registrationForm.value | json}}
 </div>
