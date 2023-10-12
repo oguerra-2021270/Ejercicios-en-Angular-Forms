@@ -5,24 +5,26 @@
 
     <div class="form-group">
       <label>Username</label>
-      <input formControlName="userName" type="text" class="form-control">
+      <input [class.is-invalid]= "userName?.invalid && 
+                                  userName?.touched" formControlName="userName" type="text" class="form-control">
+      <!-- <small [class.d-none]="registrationForm.get('userName')?.invalid && 
+                            registrationForm.get('userName')?.untouched" class="text-danger">Username is required</small> -->
+      
+      <div *ngIf="userName?.invalid && registrationForm.get('userName')?.touched">
+        <small *ngIf="userName?.errors?.['required']" class="text-danger">El username es obligatorio</small>
+        <small *ngIf="userName?.errors?.['minlength']" class="text-danger">El username debe contener al menos 3 caracteres</small>
+      </div>
     </div>
-
-    <br>
 
     <div class="form-group">
       <label>Password</label>
       <input formControlName="password" type="password" class="form-control">
     </div>
 
-    <br>
-
     <div class="form-group">
       <label>Confirm password</label>
       <input formControlName="confirmPassword" type="password" class="form-control">
     </div>
-
-    <br>
 
     <div formGroupName="address">
 
@@ -31,21 +33,15 @@
         <input  formControlName="city" type="text" class="form-control">
       </div>
 
-      <br>
-
       <div class="form-group">
         <label>State</label>
         <input formControlName="state" type="text" class="form-control">
       </div>
 
-      <br>
-
       <div class="form-group">
         <label>Postal Code</label>
         <input formControlName="postalCode" type="text" class="form-control">
       </div>
-
-      <br>
 
     </div>
 
