@@ -10,17 +10,21 @@ import { PasswordValidator } from './shared/password-validator';
 })
 export class AppComponent implements OnInit {
 
-  registrationForm?: FormGroup;
+  registrationForm: FormGroup;
 
   get userName() {
-    return this.registrationForm?.get('userName');
+    return this.registrationForm.get('userName');
   }
 
   get email() {
-    return this.registrationForm?.get('email');
+    return this.registrationForm.get('email');
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    this.registrationForm = this.fb.group({
+      // Define tus controles y validadores aquí
+    });
+  }
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
@@ -38,7 +42,7 @@ export class AppComponent implements OnInit {
 
     this.registrationForm.get('subscribe')?.valueChanges
       .subscribe(checkedValue => {
-        const email = this.registrationForm?.get('email');
+        const email = this.registrationForm.get('email');
         if (checkedValue) {
           email?.setValidators(Validators.required);
         } else {
