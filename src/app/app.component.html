@@ -13,6 +13,7 @@
       <div *ngIf="userName?.invalid && registrationForm.get('userName')?.touched">
         <small *ngIf="userName?.errors?.['required']" class="text-danger">El username es obligatorio</small>
         <small *ngIf="userName?.errors?.['minlength']" class="text-danger">El username debe contener al menos 3 caracteres</small>
+        <small *ngIf="userName?.errors?.['forbiddenName']" class="text-danger"> {{userName?.errors?.['forbiddenName'].value}} Username not allowed</small>
       </div>
     </div>
 
